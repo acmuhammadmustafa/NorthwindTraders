@@ -6,7 +6,7 @@ import java.util.List;
 public class HomeScreen {
     DisplayData displayData = new DisplayData();
 
-    public void homeScreen() throws SQLException, ClassNotFoundException {
+    public void homeScreen(){
 //        String command = ConsoleHelper.promptForHelperMenu("Select an option:", List.of("Display all products","Display all customers"),true);
 //        if (command == null)
 //            return;

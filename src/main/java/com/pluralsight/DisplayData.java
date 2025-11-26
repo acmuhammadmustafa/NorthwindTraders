@@ -8,7 +8,7 @@ public class DisplayData {
     String database = "northwind";
     String databaseurl = "jdbc:mysql://localhost:3306/" + database;
 
-    public void showProducts() throws ClassNotFoundException, SQLException {
+    public void showProducts() {
         try {
             Connection connection = DriverManager.getConnection(databaseurl, username, password);
 
