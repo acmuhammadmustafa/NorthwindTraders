@@ -10,12 +10,13 @@ public class HomeScreen {
 //        String command = ConsoleHelper.promptForHelperMenu("Select an option:", List.of("Display all products","Display all customers"),true);
 //        if (command == null)
 //            return;
-        System.out.printf("Select an option:\n1) Display all products\n2) Display all customers\n0) Exit");
+        System.out.printf("Select an option:\n1) Display all products\n2) Display all customers\n3) Display all categories\n0) Exit");
         System.out.println();
       int command = ConsoleHelper.promptForInt("Selection");
       switch (command){
           case 1 -> displayData.showProducts();
           case 2 -> displayData.showCustomers();
+          case 3 -> displayData.showCategories();
           default -> {
               return;
           }
