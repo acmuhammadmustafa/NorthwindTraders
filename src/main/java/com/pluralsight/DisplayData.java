@@ -15,20 +15,10 @@ public class DisplayData {
         String database = "northwind";
         String databaseurl = "jdbc:mysql://localhost:3306/" + database;
 
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-
-            connection = DriverManager.getConnection(databaseurl, username, password);
-
-            preparedStatement = connection.prepareStatement(
-                    "SELECT productid, productname, unitprice FROM products"
-            );
-
-            resultSet = preparedStatement.executeQuery();
+        try (Connection connection = DriverManager.getConnection(databaseurl, username, password);
+             PreparedStatement preparedStatement = connection.prepareStatement(
+                     "SELECT productid, productname, unitprice FROM products");
+             ResultSet resultSet = preparedStatement.executeQuery()) {
 
             while (resultSet.next()) {
                 System.out.printf(
@@ -42,15 +32,6 @@ public class DisplayData {
         } catch (Exception e) {
             System.out.println("error");
             e.printStackTrace();
-
-        } finally {
-            try {
-                if (resultSet != null) resultSet.close();
-                if (preparedStatement != null) preparedStatement.close();
-                if (connection != null) connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
         }
     }
 
@@ -103,7 +84,6 @@ public class DisplayData {
         }
     }
 
-
     public void showCategories() {
 
         String username = "root";
@@ -147,6 +127,7 @@ public class DisplayData {
             }
         }
     }
+
     public void showProductsByCategory(int categoryId) {
         try (Connection connection = DriverManager.getConnection(databaseurl, username, password);
              PreparedStatement preparedStatement = connection.prepareStatement(
@@ -173,4 +154,3 @@ public class DisplayData {
         }
     }
 }
-
